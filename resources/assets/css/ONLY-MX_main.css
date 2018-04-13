@@ -1,0 +1,43 @@
+.container-fluid{
+	background-color: #004080;
+}
+
+.col-12{
+	display: flex; 
+	justify-content: center;
+}
+
+.fa{
+	color: rgba(255, 255, 255, 0.65);
+	float: left;
+	margin-top: 13px;
+	margin-bottom: 10px;
+}
+
+.hdr{
+	font-size: 16px;
+	font-family: Arial;
+	color: #FFF;
+	float: left;
+	padding-left: 10px;
+	width: 300px;
+	margin: 10px;
+}
+
+.slider{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.cards{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.card-img-top{
+	width: 128px;
+	height: 128px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+}
