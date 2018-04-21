@@ -4,33 +4,31 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClientsTable extends Migration
+class CreateAdminsTable extends Migration
 {
     /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+    * Run the migrations.
+    *
+    * @return void
+    */
     public function up()
     {
-        Schema::create('clients', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('first_name');
-            $table->string('second_name');
+            $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('phone');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
-
     /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+    * Reverse the migrations.
+    *
+    * @return void
+    */
     public function down()
     {
-        Schema::dropIfExists('clients');
+        Schema::dropIfExist('admins');
     }
 }

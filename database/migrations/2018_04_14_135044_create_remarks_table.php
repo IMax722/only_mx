@@ -13,7 +13,7 @@ class CreateRemarksTable extends Migration
      */
     public function up()
     {
-        Schema::create('remarks_', function (Blueprint $table) {
+        Schema::create('remarks', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('phone');

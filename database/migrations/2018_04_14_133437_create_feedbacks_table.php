@@ -15,7 +15,7 @@ class CreateFeedbacksTable extends Migration
     {
         Schema::create('feedbacks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('time_to_recall');
+            $table->string('time_to_recall')->default('Now');
             $table->string('phone');
             $table->string('name');
             $table->string('email');
