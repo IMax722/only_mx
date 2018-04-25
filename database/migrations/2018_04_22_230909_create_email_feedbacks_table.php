@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFeedbacksTable extends Migration
+class CreateEmailFeedbacksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateFeedbacksTable extends Migration
      */
     public function up()
     {
-        Schema::create('feedbacks', function (Blueprint $table) {
+        Schema::create('email_feedbacks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('time_to_recall')->nullable();
-            $table->string('phone');
             $table->string('name');
             $table->string('email');
+            $table->string('body');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateFeedbacksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('feedbacks');
+        Schema::dropIfExists('email_feedbacks');
     }
 }

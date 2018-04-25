@@ -12,7 +12,7 @@
 */
 
 Route::get('/main', function () {
-    return view('main');
+    return view('layouts.main');
 });
 
 Route::get('/services', function () {
@@ -21,9 +21,12 @@ Route::get('/services', function () {
 
 Route::get('/contacts', function () {
     return view('contacts.feedback_form');
-    return view('contacts.main');
+    return view('contacts.feedback_main');
 });
-Route::post('/contacts', 'FeedBackController@join');
+Route::post('/feedback', 'ContactsController@insert');
+Route::post('/emailfeedback', 'ContactsController@insertemailfeedback');
+Route::post('/remark', 'ContactsController@insertremark');
+Route::post('/coop', 'ContactsController@insertcoop');
 
 Auth::routes();
 

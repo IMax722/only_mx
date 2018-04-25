@@ -1,4 +1,4 @@
-@extends('contacts.main')
+@extends('contacts.feedback_main')
 
 
 @section('content')
@@ -19,19 +19,17 @@
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-									<form method="POST" action="{{ route('contacts') }}">
-										<input type="text" class="form-control" id="name" placeholder="Имя">
-									
-										@if ($errors->has('name'))
+									<form method="POST" action="/feedback">
+									{{ csrf_field() }}
+										<input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus Placeholder="Имя">
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
-                                @endif
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-									    <select class="form-control" id="time_to recall" type="time_to recall">
+									    <select name="time_to_recall" class="form-control" id="time_to recall" type="time_to recall">
 									    	<option></option>
 										    <option>9:00-10:00</option>
 										    <option>10:00-11:00</option>
@@ -44,15 +42,15 @@
 										    <option>17:00-18:00</option>
 									    </select>
 									</div>						
-								</div>
+								</div>				
 								<div class="col-md-6">
 									<div class="form-group">
-									  <input type="phone" class="form-control" id="phone" placeholder="Телефон">
+									  <input id="phone" type="phone" class="form-control" name="phone" placeholder="Телефон">
 									</div>
 								</div>
   								<div class="col-md-6">
 									<div class="form-group">
-									  <input type="email" class="form-control" id="email" placeholder="Email">
+									  <input id="email" type="email" class="form-control" name="email" placeholder="Email">
 									</div>
 								</div>
 								<div class="col-md-12">
@@ -61,8 +59,8 @@
 								<button type="submit" class="btn btn-primary" style="margin-left: 15px;">Отправить</button>
 							</div>
 						</div>
-					</form>
 					</div>      
 			    </div>
   			</div>
+					</form>
 @endsection

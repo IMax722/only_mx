@@ -1,6 +1,5 @@
 <html>
 	<head>
-	<title>App Name - @yield('title')</title>
 		<title>ONLY-MX Услуги</title>
 		<link rel="stylesheet" href="{{asset('css/ONLY-MX_contacts.css') }}" >
 		<link rel="stylesheet" href="{{asset('/css/font-awesome.min.css') }}">
@@ -73,6 +72,8 @@
 		    		</h5>
 		    	</div>
 		    	<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+								<form method="post" action="/emailfeedback">
+								{{ csrf_field() }}
 			    	<div class="card-block">
 			    		<div class="container forms">
 							<div class="row">
@@ -82,40 +83,39 @@
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-									  <input type="text" class="form-control" id="usr" placeholder="Имя">
+									  <input name="name"type="text" class="form-control" id="usr" placeholder="Имя">
 									</div>
 								</div>
   								<div class="col-md-6">
 									<div class="form-group">
-									  <input type="email" class="form-control" id="mail" placeholder="Email">
+									  <input name="email"type="email" class="form-control" id="mail" placeholder="Email">
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
-										<textarea class="form-control" rows="5" id="comment" placeholder="Текст вопроса"></textarea>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-									    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+										<textarea name="body" class="form-control" type="text" rows="5" id="comment" placeholder="Текст вопроса"></textarea>
 									</div>
 								</div>
 								<div class="col-md-12">
 									<p align="justify">Нажимая кнопку «Отправить», вы даете согласие на обработку ваших персональных данных в соответствии с Политикой конфиденциальности.</p>
 								</div>
-								<button type="submit" class="btn btn-primary" style="margin-left: 15px;">Отправить</button>
+								<input type="submit" class="btn btn-primary" style="margin-left: 15px;">
 							</div>
 						</div>
 			    	</div>
 		    	</div>
 			</div>
+</form>
+
 			<div class="card">
 			    <div class="card-header" role="tab" id="headingThree">
-			    	<h5 class="mb-0">
+					<h5 class="mb-0">
 			        	<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Пожелания и замечания</a>
 			    	</h5>
 			    </div>
 			    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+				<form method="post" action="/remark">
+								{{ csrf_field() }}
 			    	<div class="card-block">
 			    		<div class="container forms">
 							<div class="row">
@@ -125,12 +125,12 @@
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-									  <input type="text" class="form-control" id="usr" placeholder="Имя">
+									  <input name="name" type="text" class="form-control" id="usr" placeholder="Имя">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-									    <select class="form-control" id="exampleSelect1">
+									    <select name="problem" class="form-control" id="exampleSelect1">
 										    <option>Проблемы с перевозкой</option>
 										    <option>Проблемы с грузом</option>
 										    <option>Документы</option>
@@ -142,17 +142,17 @@
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-									  <input type="phone" class="form-control" id="phone" placeholder="Телефон">
+									  <input name="phone" type="phone" class="form-control" id="phone" placeholder="Телефон">
 									</div>
 								</div>
   								<div class="col-md-6">
 									<div class="form-group">
-									  <input type="email" class="form-control" id="mail" placeholder="Email">
+									  <input name="email" type="email" class="form-control" id="mail" placeholder="Email">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-									    <select class="form-control" id="exampleSelect2">
+									    <select name="sender" class="form-control" id="exampleSelect2">
 										    <option>Отправитель</option>
 										    <option>Получатель</option>
 										    <option>Третье лицо</option>
@@ -161,23 +161,25 @@
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-									  <input type="text" class="form-control" id="number" placeholder="Номер квитанции/заявки">
+									  <input name="number" type="text" class="form-control" id="number" placeholder="Номер квитанции/заявки">
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
-										<textarea class="form-control" rows="5" id="comment" placeholder="Текст сообщения"></textarea>
+										<textarea name="comment" class="form-control" rows="5" id="comment" placeholder="Текст сообщения"></textarea>
 									</div>
 								</div>
 								<div class="col-md-12">
 									<p align="justify">Нажимая кнопку «Отправить», вы даете согласие на обработку ваших персональных данных в соответствии с Политикой конфиденциальности.</p>
 								</div>
-								<button type="submit" class="btn btn-primary" style="margin-left: 15px;">Отправить</button>
+								<input type="submit" class="btn btn-primary" style="margin-left: 15px;">
 							</div>
 						</div>
 			    	</div>
 			    </div>
 			</div>
+		</form>
+
 			<div class="card">
 		    	<div class="card-header" role="tab" id="headingFour">
 		    		<h5 class="mb-0">
@@ -185,7 +187,9 @@
 		    		</h5>
 		    	</div>
 		    	<div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
-			    	<div class="card-block">
+				<form method="post" action="/coop">
+								{{ csrf_field() }}
+					<div class="card-block">
 			    		<div class="container forms">
 							<div class="row">
 								<div class="col-md-12">
@@ -194,44 +198,40 @@
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-									  <input type="text" class="form-control" id="usr" placeholder="Имя">
+									  <input name="name" type="text" class="form-control" id="usr" placeholder="Имя">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-									  <input type="text" class="form-control" id="company" placeholder="Компания">
+									  <input name="company" type="text" class="form-control" id="company" placeholder="Компания">
 									</div>
 								</div>
 								<div class="col-md-6">
+									  <input name="phone" type="phone" class="form-control" id="phone" placeholder="Телефон">
 									<div class="form-group">
-									  <input type="phone" class="form-control" id="phone" placeholder="Телефон">
 									</div>
 								</div>
   								<div class="col-md-6">
+									  <input name="email" type="email" class="form-control" id="mail" placeholder="Email">
 									<div class="form-group">
-									  <input type="email" class="form-control" id="mail" placeholder="Email">
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
-										<textarea class="form-control" rows="5" id="comment" placeholder="Сопроводительный текст"></textarea>
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-									    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+										<textarea name="comment" class="form-control" rows="5" id="comment" placeholder="Сопроводительный текст"></textarea>
 									</div>
 								</div>
 								<div class="col-md-12">
 									<p align="justify">Нажимая кнопку «Отправить», вы даете согласие на обработку ваших персональных данных в соответствии с Политикой конфиденциальности.</p>
 								</div>
-								<button type="submit" class="btn btn-primary" style="margin-left: 15px;">Отправить</button>
+								<input type="submit" class="btn btn-primary" style="margin-left: 15px;">
 							</div>
 						</div>
 			    	</div>
 		    	</div>
 			</div>
 		</div>
+		</form>
 
 		<footer><center>Алла Кравченко © 2017 ONLY-MX</center></footer>
 	</body>

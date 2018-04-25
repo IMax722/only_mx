@@ -20,8 +20,8 @@ class CreateRemarksTable extends Migration
             $table->string('email');
             $table->string('problem');
             $table->string('sender');
-            $table->string('check_num');
-            $table->string('text');
+            $table->string('number');
+            $table->string('comment');
             $table->timestamps();
         });
     }
