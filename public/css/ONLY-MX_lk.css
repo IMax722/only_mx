@@ -1,0 +1,25 @@
+.container-fluid{
+	background-color: #004080;
+}
+
+.col-12{
+	display: flex; 
+	justify-content: center;
+}
+
+.fa{
+	color: rgba(255, 255, 255, 0.65);
+	float: left;
+	margin-top: 13px;
+	margin-bottom: 10px;
+}
+
+.hdr{
+	font-size: 16px;
+	font-family: Arial;
+	color: #FFF;
+	float: left;
+	padding-left: 10px;
+	width: 300px;
+	margin: 10px;
+}

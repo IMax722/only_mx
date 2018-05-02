@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/main', function () {
+Route::get('/', function () {
     return view('layouts.main');
 });
 
@@ -31,6 +31,9 @@ Route::post('/coop', 'ContactsController@insertcoop');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
 
 Route::get('/admin', 'AdminController@index');
 Route::get('/admin/login', ['as' => 'admin.login','uses' => 'AuthAdmin\LoginController@showLoginForm']);

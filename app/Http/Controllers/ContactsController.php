@@ -82,19 +82,5 @@ class ContactsController extends Controller
             ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Feedback
-     */
-    protected function create(array $data)
-    {
-        return Feedback::create([
-            'name' => $data['name'],
-            'time_to_recall' => $data['time_to_recall'],
-            'phone' => $data['phone'],
-            'email' => $data['email'],
-            ]);
-    }
+   
 }
