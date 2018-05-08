@@ -19,6 +19,7 @@ class CreateFeedbacksTable extends Migration
             $table->string('phone');
             $table->string('name');
             $table->string('email');
+            $table->string('status')->default('Ожидает звонка');
             $table->timestamps();
         });
     }

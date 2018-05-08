@@ -22,6 +22,7 @@ class CreateRemarksTable extends Migration
             $table->string('sender');
             $table->string('number');
             $table->string('comment');
+            $table->string('status')->default('Ожидает ответа');
             $table->timestamps();
         });
     }

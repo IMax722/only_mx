@@ -3,6 +3,9 @@
 
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\DB;
+use app\Admin;
+
 
 class AdminController extends Controller
 {
@@ -22,6 +25,28 @@ class AdminController extends Controller
     */
     public function index()
     {
-        dd(Auth::guard('admin')->user());
+        $email_feedbacks = DB::table('email_feedbacks')->get();
+
+        $feedbacks = DB::table('feedbacks')->get();
+
+        $coops = DB::table('coops')->get();
+        
+        $orders = DB::table('orders')->get();
+        
+        $id = Auth::guard('admin')->id();
+        
+        $admin_type = DB::table('admins')->where('id', $id)->value('admin_type');
+        
+        if($admin_type == "admin"){     
+            return view('layouts.home_head');
+        } elseif ($admin_type == "cons") {
+            return view('layouts.home_cons', ['feedbacks' => $feedbacks] , ['email_feedbacks' => $email_feedbacks]);
+        } elseif ($admin_type == "mg") {
+            return view('layouts.home_pur', ['coops' => $coops]);
+        } elseif ($admin_type == "coord") {
+            return view('layouts.home_coord', ['orders' => $orders]);              
+        } else {
+            echo "error 404";
+        }
     }
 }

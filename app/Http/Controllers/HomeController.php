@@ -19,7 +19,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    }
+    }  
 
     /**
      * Show the application dashboard.
@@ -29,11 +29,20 @@ class HomeController extends Controller
     public function index()
     {
         $id = Auth::id();
+        $name = DB::table('users')->where('id', $id)->value('name');
         $user_type = DB::table('users')->where('id', $id)->value('user_type');
+
+        $orders = DB::table('orders')
+        ->groupBy('id')
+        ->having('user', '=', $name)
+        ->get();
+        
+        $needs = DB::table('needs')->get();
+        
         if($user_type == "Клиент"){     
-            return view('layouts.home_cons');
+            return view('layouts.home_lk', ['orders' => $orders]);
         } else {
-            return view('layouts.home_supplier');
+            return view('layouts.home_supplier', ['needs' => $needs]);
         }
         
     }

@@ -28,11 +28,12 @@ Route::post('/emailfeedback', 'ContactsController@insertemailfeedback');
 Route::post('/remark', 'ContactsController@insertremark');
 Route::post('/coop', 'ContactsController@insertcoop');
 
+Route::post('/order', 'OrdersController@insertorder');
+Route::post('/supply', 'SupplyController@insertsupply');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-
 
 
 Route::get('/admin', 'AdminController@index');

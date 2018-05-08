@@ -20,6 +20,7 @@ class CreateCoopsTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->string('comment');
+            $table->string('status')->default('Ожидает ответа');
             $table->timestamps();
         });
     }

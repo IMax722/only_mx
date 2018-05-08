@@ -18,6 +18,7 @@ class CreateEmailFeedbacksTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('body');
+            $table->string('status')->default('Ожидает ответа');
             $table->timestamps();
         });
     }

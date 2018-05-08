@@ -11,10 +11,7 @@
 	</head>
 	<body>
 		<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-		    	<span class="navbar-toggler-icon"></span>
-			</button>
-		  	<a class="navbar-brand" href="/D:/ONLY-MX/ONLY-MX_main.html">ONLY-MX Основной сайт</a>    
+		
 		</nav>
 
 		<nav class="navbar navbar-light bg-light"><span class="navbar-text"><h5>Отзывы клиентов</h5></span></nav>

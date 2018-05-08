@@ -28,13 +28,10 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Тип пользователя') }}</label>
                         
                         <div class="col-md-6">
-                                <input id="user_type" type="text" class="form-control{{ $errors->has('user_type') ? ' is-invalid' : '' }}" name="user_type" value="{{ old('user_type') }}" required autofocus>
-
-                                @if ($errors->has('user_type'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('user_type') }}</strong>
-                                    </span>
-                                @endif
+                                <select name="user_type" class="form-control">
+											<option>Клиент</option>
+											<option>Поставщик</option>
+                                    </select>
                             </div>
                         </div>
 

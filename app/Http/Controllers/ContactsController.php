@@ -40,7 +40,7 @@ class ContactsController extends Controller
         $name = $request->input('name');
         $email = $request->input('email');
         $body = $request->input('body');
-        DB::insert('insert into email_feedbacks (name,email,body,created_at) values(?, ? ,?)', [$name,$email,$body]);
+        DB::insert('insert into email_feedbacks (name,email,body) values(?, ? ,?)', [$name,$email,$body]);
         echo "Record inserted successfully.<br/>";
         echo '<a href = "/insert">Click Here</a> to go back.';
     }

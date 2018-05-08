@@ -31,20 +31,21 @@
 					    		<th>Телефон</th>
 					    		<th>Email</th>
 					    		<th>Сопроводительный текст</th>
-					    		<th>Вложение</th>
 					    		<th>Статус</th>
 							</tr>
 						</thead>
 						<tbody>
+							@foreach ($coops as $coop)
 							<tr>
-					    		<th scope="row">1</th>
-					    		<td>Алексей</td>
-					    		<td>ТК "Авторитет"</td>
-					    		<td>89501234567</td>
-					    		<td>authority@mail.ru</td>
-					    		<td>Прошу рассмотреть коммерческое предложение. Файл со всеми подробностями прикрепляю.</td>
-					    		<td>*файл*</td>
-					    		<td>
+					    		<th scope="row">{{ $coop->id }}</th>
+					    		<td>{{ $coop->name }}</td>
+					    		<td>{{ $coop->company }}</td>
+								<td>{{ $coop->phone }}</td>
+								<td>{{ $coop->email }}</td>
+								<td>{{ $coop->comment }}</td>
+								<td>{{ $coop->status }}</td>
+					    		
+								<td>
 						    		<div class="form-group">
 										<select class="form-control">
 											<option>Ожидает ответа</option>
@@ -55,25 +56,7 @@
 									</div>
 								</td>
 							</tr>
-					    	<tr>
-					    		<th scope="row">2</th>
-					    		<td>Виктор</td>
-					    		<td>Логистика+</td>
-					    		<td>89689876543</td>
-					    		<td>logistika_plus@gmail.com</td>
-					    		<td>Давайте посотрудничаем!</td>
-					    		<td>*файл*</td>
-					    		<td>
-					    			<div class="form-group">
-										<select class="form-control">
-											<option>Ожидает ответа</option>
-											<option>На рассмотрении</option>
-											<option>На согласовании</option>
-											<option>Отклонено</option>
-										</select>
-									</div>
-								</td>
-					    	</tr>
+					    	@endforeach
 						</tbody>
 					</table>	
 				</div>

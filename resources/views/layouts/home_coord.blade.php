@@ -38,44 +38,20 @@
 							</tr>
 						</thead>
 						<tbody>
+							@foreach ($orders as $order)
 							<tr>
-					    		<th scope="row">1</th>
-					    		<td>Иванова Светлана Игоревна</td>
-					    		<td>Одинцово, ул.Д.Давыдова, д.1</td>
-					    		<td>89041230987</td>
-					    		<td>сборный груз</td>
-					    		<td>4</td>
-					    		<td>Соловьев Константин Петрович</td>
-								<td>Мытищи, ул.Индустриальная, д.7, к.1</td>
-								<td>89045649320</td>
-					    		<td>
-						    		<div class="form-group">
-										<select class="form-control">
-											<option>Ожидает ответа</option>
-											<option>В работе</option>
-											<option>Выполнено</option>
-										</select>
-									</div>
-								</td>
+								<th scope="row">{{ $order->id }}</th>
+					    		<td>{{ $order->sender }}</td>
+					    		<td>{{ $order->lol1 }}</td>
+					    		<td>{{ $order->phone1 }}</td>
+					    		<td>{{ $order->type }}</td>
+					    		<td>{{ $order->am }}</td>
+					    		<td>{{ $order->taker }}</td>
+								<td>{{ $order->lol2 }}</td>
+								<td>{{ $order->phone2 }}</td>
+								<td>{{ $order->status }}</td>
 							</tr>
-					    	<tr>
-					    		<th scope="row">2</th>
-					    		<td>Сидоров Антов Евгеньевич</td>
-					    		<td>Орехово-Зуево, ул.Матросова, д.23</td>
-					    		<td>89024601221</td>
-					    		<td>выделенный транспорт</td>
-					    		<td>12</td>
-					    		<td>Карпов Николай Федорович</td>
-								<td>Чехов, ул.Товарная, д.2</td>
-								<td>89012340912</td>
-					    		<td>
-						    		<div class="form-group">
-										<select class="form-control">
-											<option>Ожидает ответа</option>
-											<option>В работе</option>
-											<option>Выполнено</option>
-										</select>
-									</div>
+							@endforeach
 								</td>
 					    	</tr>
 						</tbody>

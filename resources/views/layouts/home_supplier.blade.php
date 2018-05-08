@@ -71,33 +71,12 @@
 						</thead>
 						<tbody>
 							<tr>		    		
-					    		<td>
-					    			<p>КОНКУРС НА ЗАКУПКУ КАНЦЕЛЯРСКИХ ТОВАРОВ</p>
-					    			<p>Бумага (А4, 80 гр/м, 500 л, 96%) HP Office</p>
-					    			<p>Скоросшиватель пр. бел. мелов. 236*315</p>
-					    			<p>Обложка «Дело» б/скор.мелов. 236*315</p>
-					    			<p>Бумага СветоКопи – 10-20 уп/мес</p>
-					    		</td>
-					    		<td>
-					    			<p>Волкова Елена</p>
-					    			<p>тел. 89531234567</p>
-					    		</td>
-					    		<td>Регулярно</td>
-					    		<td>10 т.р./месяц</td>
-							</tr>
-					    	<tr>		    		
-					    		<td>
-					    			<p>КОНКУРС НА ГРУЗОВЫЕ ШИНЫ</p>
-					    			<p>Рулевые 315/70</p>
-					    			<p>Ведущие 315/70</p>
-					    			<p>Прицепные 385/65</p>
-					    		</td>
-					    		<td>
-					    			<p>Иванов Алексей</p>
-					    			<p>тел. 89609876543</p>
-					    		</td>
-					    		<td>Регулярно</td>
-					    		<td>300-500 т.р./месяц</td>
+							@foreach ($needs as $need)
+								<td>{{ $need->body }}</td>
+								<td>{{ $need->contacts }}</td>
+								<td>{{ $need->period }}</td>
+								<td>{{ $need->cost }}</td>
+								@endforeach
 					    	</tr>
 						</tbody>
 					</table>
@@ -109,6 +88,8 @@
 
 		<div class="card-block">
 			<div class="container forms">
+			<form method="POST" action="/supply">
+			{{ csrf_field() }}
 				<div class="row">
 					<div class="col-md-12">
 						<p align="justify">Хотите сотрудничать с нами? Мы будем рады рассмотреть ваше коммерческое предложение.</p>
@@ -116,40 +97,37 @@
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<input type="text" class="form-control" id="usr" placeholder="Имя">
+							<input name="name" type="text" class="form-control" id="usr" placeholder="Имя">
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<input type="text" class="form-control" id="company" placeholder="Компания">
+							<input name="company" type="text" class="form-control" id="company" placeholder="Компания">
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<input type="phone" class="form-control" id="phone" placeholder="Телефон">
+							<input name="phone" type="phone" class="form-control" id="phone" placeholder="Телефон">
 						</div>
 					</div>
   					<div class="col-md-6">
 						<div class="form-group">
-							<input type="email" class="form-control" id="mail" placeholder="Email">
+							<input name="email" type="email" class="form-control" id="mail" placeholder="Email">
 						</div>
 					</div>
 					<div class="col-md-12">
 						<div class="form-group">
-							<textarea class="form-control" rows="5" id="comment" placeholder="Сопроводительный текст"></textarea>
+							<textarea name="comment" class="form-control" rows="5" id="comment" placeholder="Сопроводительный текст"></textarea>
 						</div>
 					</div>
-					<div class="col-md-12">
-						<div class="form-group">
-							<input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-						</div>
 					</div>
 					<div class="col-md-12">
 						<p align="justify">Нажимая кнопку «Отправить», вы даете согласие на обработку ваших персональных данных в соответствии с Политикой конфиденциальности.</p>
 					</div>
-					<button type="submit" class="btn btn-primary" style="margin-left: 15px;">Отправить</button>
+					<input type="submit" class="btn btn-primary" style="margin-left: 15px;">
 				</div>
 			</div>
+		</form>
 		</div>
 	</body>
 </html>
