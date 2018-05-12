@@ -21,6 +21,8 @@ class SupplyController extends Controller
       DB::insert('insert into coops(name,company,phone,email,comment) values(?, ?, ?, ?,?)', [$name,$company,$phone,$email,$comment]); 
       echo "Record inserted successfully.<br/>";
       echo '<a href = "/insert">Click Here</a> to go back.';
+      return redirect('/home');
 
     }
+   
 }

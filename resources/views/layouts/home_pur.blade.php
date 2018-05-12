@@ -16,10 +16,44 @@
 			</button>
 		  	<a class="navbar-brand" href="/D:/ONLY-MX/ONLY-MX_main.html">ONLY-MX Основной сайт</a>    
 		</nav>
+		<nav class="navbar navbar-light bg-light"><span class="navbar-text"><h5>Создание тендера компании</h5></span></nav>
+		<div class="col-md-6">
 
+									<div class="form-group">
+									<form method="POST" action="/insertneed">
+									{{ csrf_field() }}
+										<input id="body" type="text" class="form-control{{ $errors->has('body') ? ' is-invalid' : '' }}" name="body" value="{{ old('body') }}" required autofocus Placeholder="Описание">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+									<input id="contacts" type="text" class="form-control" name="contacts" placeholder="Контакты">
+									</div>						
+								</div>				
+								<div class="col-md-6">
+									<div class="form-group">
+									  <input id="period" type="text" class="form-control" name="period" placeholder="Период закупки">
+									</div>
+								</div>
+  								<div class="col-md-6">
+									<div class="form-group">
+									  <input id="cost" type="text" class="form-control" name="cost" placeholder="Ориентировочная стоимость">
+									</div>
+								</div>
+								<div class="col-md-12">
+								</div>
+								<button type="submit" class="btn btn-primary" style="margin-left: 15px;">Отправить</button>
+							</div>
+						</div>
+					</div>      
+			    </div>
+					</form>
+  			</div>
 		<nav class="navbar navbar-light bg-light"><span class="navbar-text"><h5>Заявки на сотрудничество</h5></span></nav>
 
 		<div class="container table">
+		<form method="POST" action="/updatecoop">
+									{{ csrf_field() }}
 			<div class="row">
 				<div class="col-12">
 					<table class="table">
@@ -45,22 +79,25 @@
 								<td>{{ $coop->comment }}</td>
 								<td>{{ $coop->status }}</td>
 					    		
+							</tr>
+					    	@endforeach
 								<td>
 						    		<div class="form-group">
-										<select class="form-control">
+										<select name="status" class="form-control">
 											<option>Ожидает ответа</option>
 											<option>На рассмотрении</option>
 											<option>На согласовании</option>
 											<option>Отклонено</option>
 										</select>
+										<input name="id" type="text">
+								<input type="submit" class="btn btn-primary" style="margin-right: 1px;">	
 									</div>
 								</td>
-							</tr>
-					    	@endforeach
 						</tbody>
 					</table>	
 				</div>
 			</div>
+			</form>
 		</div>
 	</body>
 </html>

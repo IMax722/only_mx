@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use app\User;
 use app\Order;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -34,18 +32,20 @@ class OrdersController extends Controller
         DB::insert('insert into orders (user,sender, taker, phone1, phone2, lol1, lol2, type, am) values(?, ?, ?, ?, ?, ?, ?, ?,?)', [$user,$sender,$taker,$phone1,$phone2,$lol1,$lol2,$type,$am]);
         echo "Record inserted successfully.<br/>";
         echo '<a href = "/insert">Click Here</a> to go back.';
-        
-
+        return redirect('/home');
 
     }
-    public function showorder()
+    public function updateorder(Request $request)
     {
-        
-        $orders = DB::table('orders')->get();
-
-        return view('layouts.home_cons', ['orders' => $orders]);
+        $id = $request->input('id');
+        $status = $request->input('status');
+        DB::table('orders')
+            ->where('id', $id)
+            ->update(['status' => $status]);
+            echo "Record inserted successfully.<br/>";
+            echo '<a href = "/insert">Click Here</a> to go back.';   
+            return redirect('/admin');
 
     }
-
 
 }

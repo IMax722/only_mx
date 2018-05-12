@@ -17,6 +17,8 @@
 		<nav class="navbar navbar-light bg-light"><span class="navbar-text"><h5>Отзывы клиентов</h5></span></nav>
 
 		<div class="container table">
+		<form method="POST" action="/updateremark">
+								{{ csrf_field() }}
 			<div class="row">
 				<div class="col-12">
 					<table class="table">
@@ -35,47 +37,34 @@
 						</thead>
 						<tbody>
 							<tr>
-					    		<th scope="row">1</th>
-					    		<td>Ольга</td>
-					    		<td>Некорректное отношение</td>
-					    		<td>89511928374</td>
-					    		<td>olga.s.k@mail.ru</td>
-					    		<td>Третье лицо</td>
-					    		<td></td>
-								<td>Здравствуйте! Звонила сегодня по телефону горячей линии. Консультант Светлана грубит, не дает четких ответов на вопросы! Разберитесь, пожалуйста! Сотрудников надо обучать!</td>
+								@foreach ($remarks as $remark)					    		
+								<th name="id" scope="row">{{ $remark->id }}</th>
+					    		<td>{{ $remark->name }}</td>
+								<td>{{ $remark->problem }}</td>
+								<td>{{ $remark->phone }}</td>
+								<td>{{ $remark->email }}</td>
+								<td>{{ $remark->sender }}</td>
+								<td>{{ $remark->number }}</td>
+								<td>{{ $remark->comment }}</td>
+								<td>{{ $remark->status }}</td>
 					    		<td>
-						    		<div class="form-group">
-										<select class="form-control">
-											<option>Ожидает ответа</option>
-											<option>В работе</option>
-											<option>Рассмотрено</option>
-										</select>
-									</div>
 								</td>
 							</tr>
-					    	<tr>
-					    		<th scope="row">2</th>
-					    		<td>Антон</td>
-					    		<td>Другое</td>
-					    		<td>89120901234</td>
-					    		<td>anton_67@mail.ru</td>
-					    		<td>Отправитель</td>
-					    		<td>123456789</td>
-								<td>Добрый день! Хочу выразить огромную благодарность вашей компании. Заказывал перевозку бытовой техники и мебели из квартиры загород. Машину подали вовремя, помогли с погрузкой и разгрузкой. Буду советовать вас знакомым! Спасибо!</td>
-					    		<td>
+					    	@endforeach
+						</tbody>
+					</table>	
 						    		<div class="form-group">
-										<select class="form-control">
+										<select name="status" class="form-control">
 											<option>Ожидает ответа</option>
 											<option>В работе</option>
 											<option>Рассмотрено</option>
 										</select>
 									</div>
-								</td>
-					    	</tr>
-						</tbody>
-					</table>	
+									<input name="id" type="text">
+								<input type="submit" class="btn btn-primary" style="margin-right: 1px;">
 				</div>
 			</div>
+		</form>
 		</div>
 	</body>
 </html>

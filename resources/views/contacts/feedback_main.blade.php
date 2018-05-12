@@ -30,10 +30,10 @@
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 		    	<span class="navbar-toggler-icon"></span>
 			</button>
-		  	<a class="navbar-brand" href="/main">ONLY-MX</a>
+		  	<a class="navbar-brand" href="/">ONLY-MX</a>
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 			    <ul class="navbar-nav mr-auto mt-2 mt-md-0">
-			      <li class="nav-item active"><a class="nav-link" href="/main">Главная<span class="sr-only">(current)</span></a></li>
+			      <li class="nav-item active"><a class="nav-link" href="/">Главная<span class="sr-only">(current)</span></a></li>
 					<li class="nav-item"><a class="nav-link" href="#">О нас</a></li>
 					<li class="nav-item dropdown">
 					    <a class="nav-link dropdown-toggle" href="/services" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Услуги</a>
@@ -52,10 +52,32 @@
 					<li class="nav-item"><a class="nav-link" href="#">Онлайн заказ</a></li>
 					<li class="nav-item"><a class="nav-link" href="/contacts">Обратная связь</a></li>
 			    </ul>
-			    <form class="form-inline my-2 my-lg-0">
-			      <input class="form-control mr-sm-2" type="text" placeholder="Поиск">
-    				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
-			    </form>
+			    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            <li><a class="nav-link" href="{{ route('login') }}">{{ __('Авторизация') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('Регистрация') }}</a></li>
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                    </ul>
 		  	</div>
 		</nav>
 		

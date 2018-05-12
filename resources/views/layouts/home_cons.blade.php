@@ -20,6 +20,8 @@
 		<nav class="navbar navbar-light bg-light"><span class="navbar-text"><h5>Заявки на обратный звонок</h5></span></nav>
 
 		<div class="container table">
+		<form method="POST" action="/updatefeedback">
+								{{ csrf_field() }}
 			<div class="row">
 				<div class="col-12">
 					<table class="table">
@@ -42,26 +44,30 @@
 					    		<td>{{ $feedback->phone }}</td>
 					    		<td>{{ $feedback->email }}</td>
 								<td>{{ $feedback->status }}</td>
-					    		<td>
+							</tr>
+					    	@endforeach
 						    		<div class="form-group">
-										<select class="form-control">
+										<select name="status" class="form-control">
 											<option>Ожидает звонка</option>
 											<option>Нет ответа</option>
 											<option>Выполнено</option>
 										</select>
 									</div>
-								</td>
-							</tr>
-					    	@endforeach
+							<input name="id">
+							<input type="submit" class="btn btn-primary" style="margin-right: 1px;">
+
 						</tbody>
 					</table>	
 				</div>
 			</div>
+		</form>
 		</div>
 
 		<nav class="navbar navbar-light bg-light"><span class="navbar-text"><h5>Заявки по электронной почте</h5></span></nav>
 
 		<div class="container table">
+		<form method="POST" action="/updateemailfeedback">
+								{{ csrf_field() }}
 			<div class="row">
 				<div class="col-12">
 					<table class="table">
@@ -82,20 +88,22 @@
 					    		<td>{{ $email_feedback->email }}</td>
 					    		<td>{{ $email_feedback->body }}</td>
 								<td>{{ $email_feedback->status }}</td>
-					    		<td>
+								</tr>
+					    	@endforeach
 						    		<div class="form-group">
-										<select class="form-control">
+										<select name="status" class="form-control">
 											<option>Ожидает ответа</option>
 											<option>Выполнено</option>
 										</select>
 									</div>
-								</td>
-							</tr>
-					    	@endforeach
+								<input name="id" type="text">
+								<input type="submit" class="btn btn-primary" style="margin-right: 1px;">
 						</tbody>
 					</table>	
 				</div>
 			</div>
+		</form>
 		</div>
+		
 	</body>
 </html>

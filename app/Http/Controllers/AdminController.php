@@ -25,6 +25,8 @@ class AdminController extends Controller
     */
     public function index()
     {
+        $remarks = DB::table('remarks')->get();
+
         $email_feedbacks = DB::table('email_feedbacks')->get();
 
         $feedbacks = DB::table('feedbacks')->get();
@@ -38,7 +40,7 @@ class AdminController extends Controller
         $admin_type = DB::table('admins')->where('id', $id)->value('admin_type');
         
         if($admin_type == "admin"){     
-            return view('layouts.home_head');
+            return view('layouts.home_head', ['remarks' => $remarks]);
         } elseif ($admin_type == "cons") {
             return view('layouts.home_cons', ['feedbacks' => $feedbacks] , ['email_feedbacks' => $email_feedbacks]);
         } elseif ($admin_type == "mg") {

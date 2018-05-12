@@ -23,13 +23,30 @@ Route::get('/contacts', function () {
     return view('contacts.feedback_form');
     return view('contacts.feedback_main');
 });
+
 Route::post('/feedback', 'ContactsController@insert');
+
 Route::post('/emailfeedback', 'ContactsController@insertemailfeedback');
+
+Route::post('/updateemailfeedback', 'ContactsController@updateemailfeedback');
+
+Route::post('/updatefeedback', 'ContactsController@updatefeedback');
+
 Route::post('/remark', 'ContactsController@insertremark');
+
+Route::post('/updateremark', 'ContactsController@updateremark');
+
 Route::post('/coop', 'ContactsController@insertcoop');
 
+Route::post('/updatecoop', 'ContactsController@updatecoop');
+
 Route::post('/order', 'OrdersController@insertorder');
+
+Route::post('/updateorder', 'OrdersController@updateorder');
+
 Route::post('/supply', 'SupplyController@insertsupply');
+
+Route::post('/insertneed','NeedsController@insertneed');
 
 Auth::routes();
 

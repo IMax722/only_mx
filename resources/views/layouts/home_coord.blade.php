@@ -20,7 +20,8 @@
 		<nav class="navbar navbar-light bg-light"><span class="navbar-text"><h5>Заявки клиентов</h5></span></nav>
 
 		<div class="container table">
-			<div class="row">
+		<form method="POST" action="/updateorder">
+								{{ csrf_field() }}<div class="row">
 				<div class="col-12">
 					<table class="table">
 						<thead>
@@ -36,6 +37,14 @@
 					    		<th>Телефон получателя</th>
 					    		<th>Статус</th>
 							</tr>
+							<div class="form-group">
+										<select name="status" class="form-control">
+											<option>В процессе выполнения</option>
+											<option>Выполнено</option>
+										</select>
+									</div>
+								<input name="id" type="text">
+								<input type="submit" class="btn btn-primary" style="margin-right: 1px;">	
 						</thead>
 						<tbody>
 							@foreach ($orders as $order)
@@ -54,10 +63,12 @@
 							@endforeach
 								</td>
 					    	</tr>
+							
 						</tbody>
 					</table>	
 				</div>
 			</div>
+		</form>
 		</div>
 	</body>
 </html>

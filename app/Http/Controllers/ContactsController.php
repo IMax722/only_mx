@@ -7,7 +7,6 @@ use app\Email_feedback;
 use app\Remark;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
 class ContactsController extends Controller
@@ -27,6 +26,7 @@ class ContactsController extends Controller
         DB::insert('insert into feedbacks (name,time_to_recall,phone,email) values(?, ? ,? ,?)', [$name,$time_to_recall,$phone,$email]);
         echo "Record inserted successfully.<br/>";
         echo '<a href = "/insert">Click Here</a> to go back.';
+        return redirect('/contacts');
         //
     }
     /**
@@ -43,6 +43,8 @@ class ContactsController extends Controller
         DB::insert('insert into email_feedbacks (name,email,body) values(?, ? ,?)', [$name,$email,$body]);
         echo "Record inserted successfully.<br/>";
         echo '<a href = "/insert">Click Here</a> to go back.';
+        return redirect('/contacts');
+
     }
     public function insertremark(Request $request)
     {
@@ -57,6 +59,8 @@ class ContactsController extends Controller
             [$name,$phone,$email,$sender,$number,$problem,$comment]);
             echo "Record inserted successfully.<br/>";
             echo '<a href = "/insert">Click Here</a> to go back.';
+            return redirect('/contacts');
+
     }
     public function insertcoop(Request $request)
     {
@@ -69,18 +73,53 @@ class ContactsController extends Controller
             [$name,$company,$phone,$email,$comment]);
             echo "Record inserted successfully.<br/>";
             echo '<a href = "/insert">Click Here</a> to go back.';
+            return redirect('/contacts');
+
 
     }
-    
-    protected function validator(array $data)
+    public function updateremark(Request $request)
     {
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'time_to_recall' => 'required|string|email|max:255',
-            'phone' => 'required|string|min:6|confirmed',
-            'email' => 'required|string|email|max:255',
-            ]);
-    }
+        $id = $request->input('id');
+        $status = $request->input('status');
+        DB::table('remarks')
+            ->where('id', $id)
+            ->update(['status' => $status]);
+            echo "Record inserted successfully.<br/>";
+            echo '<a href = "/insert">Click Here</a> to go back.';
+            return redirect('/admin');
 
-   
+    }
+    public function updatefeedback(Request $request)
+    {
+        $id = $request->input('id');
+        $status = $request->input('status');
+        DB::table('feedbacks')
+            ->where('id', $id)
+            ->update(['status' => $status]);
+            echo "Record inserted successfully.<br/>";
+            echo '<a href = "/insert">Click Here</a> to go back.';   
+            return redirect('/admin');
+        }
+    public function updateemailfeedback(Request $request)
+    {
+        $id = $request->input('id');
+        $status = $request->input('status');
+        DB::table('email_feedbacks')
+            ->where('id', $id)
+            ->update(['status' => $status]);
+            echo "Record inserted successfully.<br/>";
+            echo '<a href = "/insert">Click Here</a> to go back.';   
+            return redirect('/admin');
+        }
+    public function updatecoop(Request $request)
+    {
+        $id = $request->input('id');
+        $status = $request->input('status');
+        DB::table('coops')
+            ->where('id', $id)
+            ->update(['status' => $status]);
+            echo "Record inserted successfully.<br/>";
+            echo '<a href = "/insert">Click Here</a> to go back.';
+            return redirect('/admin');
+        }   
 }
