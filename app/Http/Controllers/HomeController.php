@@ -33,8 +33,7 @@ class HomeController extends Controller
         $user_type = DB::table('users')->where('id', $id)->value('user_type');
 
         $orders = DB::table('orders')
-        ->groupBy('id')
-        ->having('user', '=', $name)
+        ->where('user', '=', $name)
         ->get();
         
         $needs = DB::table('needs')->get();
